@@ -4,8 +4,8 @@ to be used in this project.
 BaseModel Class is defined that standardizes an interface
 for dealing with other subclasses throughout the AirBnB Project.
 """
-import datetime
-import uuid
+from datetime import datetime
+from uuid import uuid4
 
 
 class BaseModel:
@@ -26,23 +26,24 @@ class BaseModel:
             *args: a tuple containing arguments, not used
             **kwargs: a list of key, value pair of args
         """
-        if kwargs is not None:
+        if not kwargs:
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
+            self.id = str(uuid4())
+        else:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
                 elif key in ["created_at", "updated_at"]:
                     value = datetime.fromisoformat(value)
                 self.__dict__["{key}"] = value
-        else:
-            self.created_at = datetime.now()
-            self.updated_at = self.created_at
-            self.id = str(uuid.uuid4())
 
     def __str__(self):
         """Prints some attributes of the class BaseModel
         """
-        print("[{}] ({}) {}".format(self.__class__.__name__,
-              self.id, self.__dict__))
+        return "[{}] ({}) {}".format(
+                self.__class__.__name__,
+                self.id, self.__dict__)
 
     def save(self):
         """Updates the object for now and edits its
@@ -61,3 +62,4 @@ class BaseModel:
             if key in ["created_at", "updated_at"]:
                 value = value.isoformat()
             my_dict[key] = value
+        return my_dict
