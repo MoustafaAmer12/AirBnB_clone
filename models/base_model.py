@@ -39,15 +39,21 @@ class BaseModel:
                 self.__dict__[f"{key}"] = value
 
     def __str__(self):
-        """Prints some attributes of the class BaseModel
+        """A method that extracts a string representation
+        of the object
+        Returns:
+            String representation of an object that
+            can be used for further storage.
         """
         return "[{}] ({}) {}".format(
                 self.__class__.__name__,
                 self.id, self.__dict__)
 
     def save(self):
-        """Updates the object for now and edits its
-        last updated time
+        """
+        Updates the object for now and edits its
+        last updated time.
+        Side effect is only updating the updated_at
         """
         self.updated_at = datetime.now()
 
