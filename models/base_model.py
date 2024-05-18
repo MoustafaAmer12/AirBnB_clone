@@ -36,7 +36,7 @@ class BaseModel:
                     continue
                 elif key in ["created_at", "updated_at"]:
                     value = datetime.fromisoformat(value)
-                self.__dict__["{key}"] = value
+                self.__dict__[f"{key}"] = value
 
     def __str__(self):
         """Prints some attributes of the class BaseModel
