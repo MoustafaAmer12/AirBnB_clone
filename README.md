@@ -90,3 +90,8 @@ There should be one project repository per group. If you clone/fork/whatever a p
 * [ ] First User
 * [ ] More Classes
 * [ ] Console 1.0
+
+#### Advanced Tasks
+''' To Do '''
+### Console Description
+''' To Do '''
