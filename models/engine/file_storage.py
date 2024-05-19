@@ -39,7 +39,7 @@ class FileStorage:
         Sets a new obj into the __objects dict
         with a key className.id
         """
-        key = f"{obj.__class__.__name__}.{obj.id}"
+        key = f"{obj.__class__}.{obj.id}"
         self.__objects[key] = obj.to_dict()
 
     def save(self):
@@ -58,7 +58,6 @@ class FileStorage:
         i.e loads the data in the file and deserializes it
         for further operations on objects.
         """
-        #from models.base_model import BaseModel
         try:
             with open(self.__file_path, "r", encoding="utf8") as file:
                 self.__objects = json.load(file)
