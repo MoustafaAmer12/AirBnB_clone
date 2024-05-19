@@ -50,7 +50,9 @@ class FileStorage:
         objects into a file.
         """
         with open(self.__file_path, "w", encoding="utf8") as file:
-            json.dump({key: obj.to_dict() for key, obj in self.__objects.items()}, file)
+            json.dump({key: obj.to_dict()
+                       for key, obj in self.__objects.items()},
+                      file)
 
     def reload(self):
         """
