@@ -6,7 +6,7 @@ for dealing with other subclasses throughout the AirBnB Project.
 """
 from datetime import datetime
 from uuid import uuid4
-from models import storage
+import models
 
 
 class BaseModel:
@@ -31,7 +31,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = self.created_at
             self.id = str(uuid4())
-            storage.new(self)
+            models.storage.new(self)
         else:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -58,7 +58,7 @@ class BaseModel:
         Side effect is only updating the updated_at
         """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Converts a BaseModel or a descnedant object

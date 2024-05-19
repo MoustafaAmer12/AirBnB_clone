@@ -6,6 +6,7 @@ get introduced to dealing with saving and loading JSON
 data objects and use them along out project.
 """
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -40,7 +41,7 @@ class FileStorage:
         with a key className.id
         """
         key = f"{obj.__class__.__name__}.{obj.id}"
-        self.__objects[key] = obj.to_dict()
+        self.__objects[key] = obj
 
     def save(self):
         """
@@ -49,7 +50,7 @@ class FileStorage:
         objects into a file.
         """
         with open(self.__file_path, "w", encoding="utf8") as file:
-            json.dump(self.__objects, file)
+            json.dump({key: obj.to_dict() for key, obj in self.__objects.items()}, file)
 
     def reload(self):
         """
@@ -60,6 +61,9 @@ class FileStorage:
         """
         try:
             with open(self.__file_path, "r", encoding="utf8") as file:
-                self.__objects = json.load(file)
+                data = json.load(file)
+                for value in data.values():
+                    cls = value["__class__"]
+                    self.new(eval(cls)(**value))
         except FileNotFoundError:
             pass
