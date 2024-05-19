@@ -83,7 +83,7 @@ There should be one project repository per group. If you clone/fork/whatever a p
 * [ ] Be Pycodestyle compilant!
 * [ ] Unittests
 * [ ] BaseModel
-* [ ] BaseModel Creation
+* [x] BaseModel Creation
 * [ ] Store First Object
 * [ ] Console 0.0.1
 * [ ] Console 0.1
