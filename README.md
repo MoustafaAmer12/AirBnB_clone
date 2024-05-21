@@ -79,17 +79,17 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
 
 ### Progression
-* [ ] README, AUTHORS
+* [x] README, AUTHORS
 * [ ] Be Pycodestyle compilant!
 * [ ] Unittests
 * [ ] BaseModel
 * [x] BaseModel Creation
 * [ ] Store First Object
-* [ ] Console 0.0.1
-* [ ] Console 0.1
+* [x] Console 0.0.1
+* [x] Console 0.1
 * [ ] First User
 * [ ] More Classes
-* [ ] Console 1.0
+* [x] Console 1.0
 
 #### Advanced Tasks
 ''' To Do '''
