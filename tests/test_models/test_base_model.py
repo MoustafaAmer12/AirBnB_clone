@@ -31,10 +31,10 @@ class TestBaseModel(unittest.TestCase):
         """
         obj_1 = BaseModel()
         obj_1.name = "Ahmed"
-        self.assertTrue(hasattr(obj_1,"id"))
-        self.assertTrue(hasattr(obj_1,"created_at"))
-        self.assertTrue(hasattr(obj_1,"updated_at"))
-        self.assertTrue(hasattr(obj_1,"name"))
+        self.assertTrue(hasattr(obj_1, "id"))
+        self.assertTrue(hasattr(obj_1, "created_at"))
+        self.assertTrue(hasattr(obj_1, "updated_at"))
+        self.assertTrue(hasattr(obj_1, "name"))
 
     def test_uniq_id(self):
         """Tests that generated ids are unique
@@ -46,16 +46,16 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(obj_1.id, obj_2.id)
         self.assertNotEqual(obj_1.id, obj_3.id)
         self.assertNotEqual(obj_2.id, obj_3.id)
-    
+
     def test_save_updates_time(self):
         """Tests that save correctly edits the
         updated_at time
         """
         obj = BaseModel()
-        update_t = obj.updated_at        
+        update_t = obj.updated_at
         obj.save()
         self.assertNotEqual(update_t, obj.updated_at)
-    
+
     def test_string_represent(self):
         """Tests that the string representation
         of the object is correct
@@ -63,15 +63,17 @@ class TestBaseModel(unittest.TestCase):
         obj = BaseModel()
         self.assertNotEqual(obj, str(obj))
         self.assertEqual(str(obj),
-                         f"[{obj.__class__.__name__}] ({obj.id}) {obj.__dict__}")
-    
+                         f"[{obj.__class__.__name__}] ({obj.id})\
+ {obj.__dict__}")
+
     def test_from_dict(self):
         """Tests the correct initialization
         of an object from dict
         """
         id = str(uuid4())
         created_at = datetime.isoformat(datetime.now())
-        test_dict = {"id": id, "created_at": created_at, "name": "Ahmed", "updated_at": created_at}
+        test_dict = {"id": id, "created_at": created_at,
+                     "name": "Ahmed", "updated_at": created_at}
         object = BaseModel(**test_dict)
         self.assertEqual(id, object.id)
         self.assertEqual(datetime.fromisoformat(created_at), object.created_at)
@@ -90,5 +92,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(obj, BaseModel)
         self.assertIsInstance(new_obj, BaseModel)
         self.assertFalse(new_obj == obj)
-
-    

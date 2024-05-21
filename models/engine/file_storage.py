@@ -28,6 +28,22 @@ class FileStorage:
     __file_path = "file.json"
     __objects = dict()
 
+    @property
+    def file_path(self):
+        return self.__file_path
+
+    @file_path.setter
+    def file_path(self, val):
+        self.__file_path = val
+
+    @property
+    def objects(self):
+        return self.__objects
+
+    @objects.setter
+    def objects(self, val):
+        self.__objects = val
+
     def all(self):
         """
         Returns the list of objects aftere being
