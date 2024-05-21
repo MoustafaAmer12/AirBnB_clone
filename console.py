@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """
 The console module
 """
@@ -7,13 +7,14 @@ import ast
 import shlex
 import re
 from models import storage
-from models.base_model import Amenity
+from models.base_model import BaseModel
 from models.user import BaseModel
-from models.amenity import City
+from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.state import State
-from models.city import user
+from models.city import City
+from models.user import User
 
 
 def split_curly_braces(e_arg):

@@ -5,7 +5,7 @@ with user-specific attributes and some
 methods that can work for users
 """
 from models import storage
-from models.base_models import BaseModel
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
